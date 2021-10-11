@@ -21,19 +21,17 @@ export function changeImg() {
     $(this).attr('src', gameData.themePath + '/images/not-found.png');
 }
 
-var slotItem = [];
+var pokerItem = [];
 var allGameList = [];
-slotItem.push($('.slot-item').data('slug'));
+pokerItem.push($('.slot-item').data('slug'));
 
 const gameList = async function () {
     allGameList = [];
     let jsonData = JSON.parse(sessionStorage.getItem('data_agent'));
     let ambData = jsonData.lists.filter(item => item.type == 'poker')[0];
-    let slotData = jsonData.lists.filter(item => item.type == 'slot');
     let respAMB = await axios.get(ambData.getGame);
-    let respSlot = await axios.get(slotData[0].getGame);
 
-    $.each(slotItem, function (index, value) {
+    $.each(pokerItem, function (index, value) {
         if (ambData.productCode == value) {
             allGameList.push({
                 'active': ambData.active,
@@ -45,27 +43,13 @@ const gameList = async function () {
                 'lists': respAMB.data.data != undefined ? respAMB.data.data : ''
             });
         }
-        $.each(slotData, function (index, slot) {
-            if (slot.productCode == value) {
-                allGameList.push({
-                    'active': slot.active,
-                    'status': slot.success,
-                    'method': slot.method,
-                    'name': slot.productName,
-                    'slug': slot.productCode,
-                    'hot': slot.recommended,
-                    'getLogin':slot.getLogin,
-                    'lists': respSlot.data.data.filter(item => item.productCode == slot.productCode)[0] != undefined ? respSlot.data.data.filter(item => item.productCode == slot.productCode)[0].lists : ''
-                });
-            }
-        });
     });
 
     return allGameList;
 }
 
 
-export default async function slot(slug) {
+export default async function poker(slug) {
     if (allGameList.length == 0) {
         await gameList();
     }
@@ -171,23 +155,14 @@ export default async function slot(slug) {
                 uri = game.getLogin,
                 data, resp, respDataUrl;
 
-            if (game.method == "POST") {
-                slug == 'pg_slot' ? data = {
-                    "gameCode": code
-                } : data = {
-                    "gameCode": id
-                }
-                resp = await axios.post(uri, data);
-                respDataUrl = resp.data.result;
-            } else {
-                if(slug == 'amb-poker') {
-                    data = uri + `gameId=${id}`
-                }else {
-                    slug == 'evoplay01' ? data = `${uri + id}&gameId=${code}&productCode=${slug}` : data = `${uri + id}&gameCode=${code}&productCode=${slug}`
-                }
-                resp = await axios.get(data);
-                respDataUrl = resp.data.url ? resp.data.url : resp.data.Url
+            
+            if(slug == 'amb-poker') {
+                data = uri + `gameId=${id}`
+            }else {
+                slug == 'evoplay01' ? data = `${uri + id}&gameId=${code}&productCode=${slug}` : data = `${uri + id}&gameCode=${code}&productCode=${slug}`
             }
+            resp = await axios.get(data);
+            respDataUrl = resp.data.url ? resp.data.url : resp.data.Url
 
             if (isLine()) {
                 if (resp.data.code == 0) {

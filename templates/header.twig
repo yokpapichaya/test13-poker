@@ -58,6 +58,10 @@
                                             <li class="nav-drop-item">
                                                 <a href="{{ TimberPost('slot').link }}?game={{ child.slot_choice.value }}&text={{ child.slot_choice.label }}" data-slug="{{ sub_menu.slot_choice.value }}">{{ child.menu_name }}</a>
                                             </li>
+                                        {% elseif child.check_link == 'poker' %}
+                                        <li class="nav-drop-item">
+                                            <a href="{{ TimberPost('poker').link }}?game={{ child.poker_choice.value }}&text={{ child.poker_choice.label }}" data-slug="{{ sub_menu.poker_choice.value }}">{{ child.menu_name }}</a>
+                                        </li>
                                         {% else %}
                                             <li class="nav-drop-item">
                                                 <a href="{{ TimberPost(child.page_link).link }}" class="{% if TimberPost(sub_menu.page_link).slug == 'wallet' %} check-login{% endif %}">{{ child.menu_name }}</a>
@@ -101,6 +105,10 @@
                                 <li class="nav-drop-item">
                                     <a href="{{ TimberPost('slot').link }}?game={{ child.slot_choice.value }}&text={{ child.slot_choice.label }}" data-slug="{{ sub_menu.slot_choice.value }}">{{ child.menu_name }}</a>
                                 </li>
+                                {% elseif child.check_link == 'poker' %}
+                                        <li class="nav-drop-item">
+                                            <a href="{{ TimberPost('poker').link }}?game={{ child.poker_choice.value }}&text={{ child.poker_choice.label }}" data-slug="{{ sub_menu.poker_choice.value }}">{{ child.menu_name }}</a>
+                                        </li>
                                 {% else %}
                                 <li class="nav-drop-item">
                                     <a href="{{ TimberPost(child.page_link).link }}" class="{% if TimberPost(sub_menu.page_link).slug == 'wallet' %} check-login{% endif %}">{{ child.menu_name }}</a>

@@ -108,6 +108,29 @@
   </div>
 </section>
 
+<section class="sec-games sec-poker" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+  <h2 class="sec-title">โป๊กเกอร์ออนไลน์</h2>
+  <span class="watermark">POKER</span>
+    <div class="row">
+      {% for p_item in options_all_poker %}
+        {% set post_poker = p_item.poker_choice %}
+        <div class="col-6 col-md-3">
+          <a href="{{ TimberPost('poker').link }}?game={{ post_poker.value }}&text={{ post_poker.label }}" class="box-games poker-game" data-slug="{{ post_poker.value }}">
+            <div class="box-gamesmain">
+            <div class="box-gamesmain__image"><img src="{{ TimberImage(p_item.poker_block_logo).src }}" alt="{{ post_poker.label }}"></div>
+            <div class="box-gamesmain__logo">
+                <img src="https://cdn.ambbet.com/landing_img/logo-{{ post_poker.value }}.png" alt="{{ post_poker.label }} logo">
+            </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec-games sec-keno" data-aos="fade-up" data-aos-duration="1000">
   <div class="container">
   <h2 class="sec-title">คีโนออนไลน์</h2>

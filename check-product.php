@@ -14,6 +14,9 @@ if( is_user_logged_in() ) {
         elseif($value == 'trading') {
             add_filter('acf/load_field/name=trading_choice', 'acf_load_trading_choice');
         }
+        elseif($value == 'poker') {
+            add_filter('acf/load_field/name=poker_choice', 'acf_load_poker_choice');
+        }
     }
 }
 
@@ -28,20 +31,11 @@ function acf_load_slot_choice( $field ) {
     
     $slots = array();
     $slot = array();
-    $pokers = array();
-    $poker = array();
     $filterSlot = 'slot';
-    $filterPoker = 'poker';
 
     foreach ($obj->lists as $key => $value) {
-        if(in_array('amb-poker', $p_list)) {
-            if($value->type == $filterSlot || $value->type == $filterPoker) {
-                $slot[ $value->productCode ] = $value->productName;
-            }
-        }else {
-            if($value->type == $filterSlot) {
-                $slot[ $value->productCode ] = $value->productName;
-            }
+        if($value->type == $filterSlot) {
+            $slot[ $value->productCode ] = $value->productName;
         }
     }
 
@@ -142,6 +136,34 @@ function acf_load_trading_choice( $field ) {
         }
     }
     
+    return $field;
+}
+function acf_load_poker_choice( $field ) {
+
+    $p_list = get_field('product_check', 'options');
+    // reset choices
+    $field['choices'] = array(); 
+
+    $jsonData = file_get_contents('https://cdn.ambbet.com/gamelists-' . get_field('agent_choice', 'options') . '.json');
+    $obj = json_decode($jsonData);
+    
+    $pokers = array();
+    $poker = array();
+    $filterPoker = 'poker';
+
+    foreach ($obj->lists as $key => $value) {
+        if($value->type == $filterPoker || $value->type == $filterPoker) {
+            $poker[ $value->productCode ] = $value->productName;
+        }
+    }
+
+    if(is_array($poker)) {
+        foreach( $poker as $key =>  $choice ) {
+            $field['choices'][ $key ] = $choice;
+        }
+    }
+    
+    // return the field
     return $field;
 }
 

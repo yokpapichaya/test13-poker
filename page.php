@@ -42,6 +42,7 @@ if( is_front_page()) {
     $context['options_h_link'] = get_fields('options')['h_link'];
     $context['options_all_bacarrat'] = get_fields('options')['all_bacarrat'];
     $context['options_all_slot'] = get_fields('options')['all_slot'];
+    $context['options_all_poker'] = get_fields('options')['all_poker'];
     Timber::render('templates/page-home.twig', $context);
 }else {
     Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );

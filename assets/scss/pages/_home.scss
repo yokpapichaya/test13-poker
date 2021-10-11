@@ -184,10 +184,6 @@
             }
         }
     }
-    .sec-keno {
-        background: #ffffff59;
-        padding: 4rem 0;
-    }
     .sec-trading {
         padding: 4rem 0;
         .row {
@@ -221,8 +217,13 @@
             flex-wrap: wrap;
         }
     }
-    .sec-casino {
+    .sec-casino,
+    .sec-poker {
         background-color: #ffffff59;
+        padding: 4rem 0;
+        .row{
+            width: 100%;
+        }
     }
     .sec-comment{
         margin: 4rem 0;

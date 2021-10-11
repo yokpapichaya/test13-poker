@@ -204,7 +204,11 @@ class StarterSite extends Timber\Site {
 				'menu_slug' 	=> 'p_slot',
 				'icon_url' => 'dashicons-image-filter',
 			));
-
+			acf_add_options_page(array(
+				'page_title' 	=> 'โป๊กเกอร์',
+				'menu_slug' 	=> 'p_poker',
+				'icon_url' => 'dashicons-images-alt',
+			));
 			acf_add_options_page(array(
 				'page_title' 	=> 'คีโน',
 				'menu_slug' 	=> 'p_keno',

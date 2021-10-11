@@ -7,6 +7,7 @@ import casino from './casino';
 import keno from './keno';
 import trading from './trading';
 import slot from './slot';
+import poker from './poker';
 import login from './login';
 import Odometer from 'odometer';
 import {
@@ -337,6 +338,14 @@ if (sessionStorage.getItem("token")) {
             },
             finalize: function () {
                 slot($('.slot-item').data('slug'));
+            }
+        },
+        'poker': {
+            init: function () {
+
+            },
+            finalize: function () {
+                poker($('.slot-item').data('slug'));
             }
         },
         'page_template_page_wallet': {
