@@ -1,0 +1,689 @@
+.box-container {
+    @include flex();
+    flex-wrap: wrap;
+    h2 {
+        text-align: center;
+        width: 100%;
+        margin: 3rem 0;
+    }
+    .wrapper {
+        @include flex();
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+        width: 100%;
+        margin-bottom: 2rem;
+        @media screen and (max-width: 767px) {
+            // flex-wrap: initial;
+        }
+    }
+    .box-allgame {
+        width: calc(33% - 1rem);
+        margin-right: 1rem;
+        border: 0.5rem solid;
+        border-image-slice: 1;
+        border-image-source: $gradient-list;
+        height: auto;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 2rem;
+        @media screen and (max-width: 1023px) {
+            margin-right: 1.5rem;
+            width: calc(33.3% - 1rem);
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+            &:nth-child(5) {
+                margin-right: 1.5rem;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            margin-right: 2rem;
+            width: calc(50% - 1rem);
+            &:nth-child(2n) {
+                margin-right: 0;
+            }
+            &:nth-child(5) {
+                margin-right: 2rem;
+            }
+        }
+        &__hot {
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            width: 9rem;
+            height: 3.8rem;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            border-radius: 0.5rem;
+        }
+        &__logo {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        &__bg {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: $gobal-transition;
+            @include flexcenter();
+            .btn {
+                background-image: $gradient;
+            }
+        }
+        &:hover {
+            flex-wrap: initial;
+            @media screen and (min-width: 1200px) {
+                .box-allgame__bg {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.box-content {
+    margin: 10rem 0rem 4rem 0;
+    @include flex();
+    background-color: #ffffff3b;
+    border-bottom: 0.7rem solid;
+    border-image-slice: 1;
+    border-image-source: $gradient;
+    @media screen and (max-width: 767px) {
+        display: inherit;
+        margin: 4rem 0rem 4rem 0;
+    }
+    &__image {
+        position: relative;
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(0 0, 0% 100%, 100% 100%);
+            background-color: $darker-green;
+            position: absolute;
+            top: 0;
+            left: 0%;
+            z-index: 0;
+        }
+        img {
+            margin: 0 auto;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+            margin-top: -6rem;
+            @media screen and (max-width: 1200px) {
+                position: relative;
+                left: 0;
+                transform: none;
+                margin-top: 0;
+            }
+        }
+        .box-content__shadow {
+            width: 50%;
+            height: 50%;
+            border-radius: 100%;
+            -webkit-box-shadow: 0px 4px 74px 35px rgba(234, 177, 43, 0.14);
+            -moz-box-shadow: 0px 4px 74px 35px rgba(234, 177, 43, 0.14);
+            box-shadow: 0px 4px 74px 35px rgba(234, 177, 43, 0.14);
+            background-color: #e6be6238;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(50px);
+            @media screen and (max-width: 1200px) {
+                width: 20%;
+            }
+            @media screen and (max-width: 767px) {
+                width: 25%;
+            }
+        }
+    }
+    &__content {
+        color: $white;
+        font-family: $font-family-base;
+        padding: 3rem;
+    }
+}
+
+.box-tab {
+    width: 100%;
+    @media screen and (max-width: 767px) {
+        margin-left: 0rem;
+    }
+}
+
+.box-product-container {
+    @include flex();
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .box-product {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        width: calc(50% - 2rem);
+        position: relative;
+        cursor: pointer;
+        min-height: 15rem;
+        -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+        -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+        border-radius: 1rem;
+        overflow: hidden;
+        // background-image: $gradient-box;
+        // background-image: linear-gradient(to right top, #0d4494, #1d50a1, #2b5dad, #366aba, #4277c7, #4a80d0, #5188d9, #5991e2, #5f97e9, #659ef0, #6ba4f8, #71abff);
+        transition: 0.5s;
+        // background-size: 200% auto;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: cover;
+        transition: $gobal-transition;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin-right: 0;
+        }
+        &:hover,
+        &:focus {
+            .btn-game {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &::before {
+                content: "";
+                left: 2%;
+                transition: $gobal-transition;
+            }
+        }
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #ffffffe6;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 55%;
+            z-index: 0;
+            transform: rotate(45deg);
+            transition: $gobal-transition;
+            @media screen and (max-width: 767px) {
+                // top: -1rem;
+                display: none;
+            }
+        }
+        &.hot {
+            // width: 100%;
+            // background-image: linear-gradient(to right top, #9884fd, #9586fd, #9289fd, #8f8bfd, #8c8dfd, #8990fd, #8692fe, #8395fe, #7f99fe, #7c9dff, #79a0fe, #77a4fe);
+            justify-content: space-around;
+            background-image: linear-gradient(to right, #f87f6c, #f78a73, #f6947a, #f59e83, #f4a88c, #f4ad91, #f3b396, #f3b89b, #f3bc9c, #f4bf9e, #f4c39f, #f4c6a1);
+            .box-product__image {
+                width: 15%;
+                margin-left: 5rem;
+                @media screen and (max-width: 767px) {
+                    width: 20%;
+                }
+            }
+            .btn-game {
+                background-image: linear-gradient(to bottom, #e94d22, #f06020, #f5721e, #fb831f, #ff9421);
+            }
+            &::after {
+                content: "HOT";
+                width: 10%;
+                height: 100%;
+                animation: blinker 1s linear infinite;
+                background-image: linear-gradient(to bottom, #e94d22, #f06020, #f5721e, #fb831f, #ff9421);
+                position: absolute;
+                background-size: 200% auto;
+                top: 0;
+                left: 0;
+                text-decoration: none;
+                color: $white;
+                z-index: 0;
+                font-weight: bold;
+                @include flexcenter();
+                font-size: 2rem;
+                @media screen and (max-width: 767px) {
+                    width: 13%;
+                    font-size: 1.8rem;
+                }
+            }
+        }
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+        &__image {
+            width: 30%;
+            z-index: 1;
+            img {
+                filter: drop-shadow(3px 3px 3px black);
+            }
+        }
+        &__detail {
+            z-index: 1;
+            h3 {
+                color: #151c26;
+                text-transform: uppercase;
+                font-family: 'Faster One', cursive;
+                text-align: center;
+                padding: 0 2rem;
+                @media screen and (max-width: 767px) {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}
+
+.box-announcement {
+    background: $gold;
+    padding: 1rem 0;
+    font-family: $font-family-base;
+    color: $black;
+    font-size: 1.6rem;
+    &__text {
+        @include flexcenter();
+        i {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.box-promotion-wrapper {
+    margin: 0;
+    @include flexcenter();
+    flex-wrap: wrap;
+    .box-promotion {
+        text-align: left;
+        margin: 2rem auto;
+        border-radius: 1.5rem;
+        background-color: $black;
+        overflow: hidden;
+        padding: 0;
+        // margin-right: 2rem;
+        img {
+            transition: $gobal-transition;
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+        &__image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: $gobal-transition;
+            &:before {
+                position: absolute;
+                top: 0;
+                left: -75%;
+                z-index: 2;
+                display: block;
+                content: '';
+                width: 50%;
+                height: 100%;
+                background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+                background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+                // -webkit-transform: skewX(-25deg);
+                // transform: skewX(-25deg);
+                -webkit-animation: shine 4s infinite;
+                animation: shine 4s infinite;
+            }
+        }
+        &__text {
+            width: 100%;
+            padding: 2rem;
+            .title {
+                h3 {
+                    color: $gold;
+                    margin-bottom: 0;
+                }
+            }
+            .condition {
+                color: $gold;
+                font-family: $font-family-base;
+                .detail {
+                    ul {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.box-login {
+    background-color: #00000099;
+    text-align: center;
+    padding: 3.5rem 0;
+    width: 50%;
+    margin: 5rem auto;
+    border-radius: 2rem;
+    @media screen and (max-width: 1024px) {
+        width: 80%;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        padding: 2rem;
+    }
+    &__logo {
+        width: 32%;
+        margin: 0 auto;
+        @media screen and (max-width: 767px) {
+            width: 50%;
+        }
+    }
+    &__instruction {
+        margin: 2rem 0;
+        color: $white;
+        font-family: $font-family-base;
+    }
+    &__input {
+        input {
+            width: 50%;
+            padding: 1.5rem;
+            border: 0.1rem solid $gold;
+            border-radius: 1rem;
+            outline: none;
+            margin-bottom: 2rem;
+            background-color: transparent;
+            color: $white;
+            font-family: $font-family-base;
+            @media screen and (max-width: 767px) {
+                width: 100%;
+            }
+        }
+         ::-webkit-input-placeholder {
+            /* Edge */
+            color: $white;
+        }
+         :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $white;
+        }
+         ::placeholder {
+            color: $white;
+        }
+    }
+    &__btn {
+        width: 50%;
+        text-align: center;
+        margin: 0 auto;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
+        .btn-login {
+            width: 100%;
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            background-image: $gradient;
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+    &__register {
+        margin: 3rem;
+        font-family: $font-family-base;
+        color: $white;
+        @media screen and (max-width: 767px) {
+            font-size: 1.5rem;
+        }
+        a {
+            color: $gold;
+        }
+    }
+}
+
+.box-description {
+    @include flex();
+    &__image {
+        width: 50%;
+    }
+    &__detail {
+        width: 50%;
+    }
+}
+
+.box-contact-wrap {
+    .box-contact {
+        width: 100%;
+        text-decoration: none;
+        @include flex();
+        align-items: center;
+        justify-content: space-around;
+        // background: $gradient;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-bottom: 3rem;
+        &:nth-of-type(odd) {
+            margin-right: 2rem;
+        }
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin-bottom: 1rem;
+            &:nth-of-type(odd) {
+                margin-right: 0rem;
+            }
+        }
+        &__btn {
+            text-align: center;
+            margin: 2rem 0;
+            margin-left: 2rem;
+            .box-contact__lineid {
+                color: $black;
+                background-image: $gradient;
+            }
+        }
+    }
+}
+
+.box-user {
+    padding: 2rem;
+    width: 100%;
+    margin: 0 auto;
+    background: $white;
+    border-radius: 1rem;
+    @include flex();
+    align-items: center;
+    &__image {
+        width: 20%;
+        @media screen and (max-width: 767px) {
+            width: 40%;
+        }
+    }
+    &__text {
+        margin-left: 2rem;
+        color: $gold;
+        font-family: $font-family-base;
+        h3 {
+            color: $gold;
+        }
+    }
+}
+
+.box-jackpot {
+    color: $white;
+    font-family: $font-family-title;
+    margin: 4rem auto;
+    font-size: 3rem;
+    @include flexcenter();
+    width: 50%;
+    @media screen and (max-width: 1023px) {
+        font-size: 2.5rem;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 2rem;
+        width: 100%;
+        margin: 2rem auto;
+    }
+    .odometer-digit {
+        font-family: $font-family-title;
+    }
+}
+
+.box-slidepro {
+    position: relative;
+    display: block;
+    filter: drop-shadow(1px 1px 6px rgba(0, 0, 0, 0.8));
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #00000085;
+    }
+    &__detail {
+        position: absolute;
+        top: 50%;
+        right: 7rem;
+        width: 50%;
+        transform: translateY(-50%);
+        color: $white;
+        z-index: 1;
+        @media screen and (max-width: 767px) {
+            width: 65%;
+        }
+        .desc {
+            margin-bottom: 2rem;
+            @media screen and (max-width: 767px) {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+.box-article {
+    margin-bottom: 2rem;
+    &__image {
+        height: 30rem;
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 2rem 2rem 0rem 0rem;
+        @media screen and (max-width: 1023px) {
+            height: 17rem;
+        }
+    }
+    &__text {
+        background-color: $black;
+        color: $gold;
+        border-radius: 0rem 0rem 2rem 2rem;
+        padding: 2rem;
+        .title {
+            color: $gold;
+            min-height: 5rem;
+        }
+    }
+}
+
+.box-games {
+    .box-gamesmain {
+        position: relative;
+        &__image {
+            border-radius: 2rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            // border: 0.2rem solid;
+        }
+        &__logo {
+            background-color: rgba($color: $gold, $alpha: 0.82);
+            bottom: 0;
+            position: absolute;
+            text-align: center;
+            top: 76.7%;
+            right: 0;
+            left: 0;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 2;
+            cursor: pointer;
+            border-radius: 0 0 2rem 2rem;
+            @include flexcenter();
+            img {
+                margin: 0 auto;
+                max-width: 60%;
+                filter: drop-shadow(2px 4px 6px black);
+            }
+        }
+        &__hot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url(../images/hot.png);
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: 10rem;
+            height: 7rem;
+            filter: drop-shadow(2px 4px 6px orange);
+            span {
+                position: absolute;
+                font-weight: bold;
+                top: 60%;
+                left: 16%;
+                transform: translateY(-50%);
+                color: $black;
+            }
+        }
+        &:hover {
+            .box-gamesmain__logo {
+                top: 0;
+                border-radius: 2rem;
+            }
+        }
+    }
+}
+
+.box-card-promotion {
+    border-radius: 0.5rem;
+    border: 0.3rem solid $gold;
+    background: #2d1313b0;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: $gobal-transition;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &__img {
+        width: 100%;
+        min-height: 17rem;
+        overflow: hidden;
+        @include flex();
+        align-items: center;
+        justify-content: center;
+    }
+    &__caption {
+        background-image: $gradient;
+        color: $black;
+        padding: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+}
+
+.box-sport {
+    @media screen and (max-width: 767px) {
+        margin: 2rem 0;
+    }
+}

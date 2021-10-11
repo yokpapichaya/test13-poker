@@ -1,0 +1,132 @@
+footer {
+    width: 100%;
+    color: $white;
+    position: relative;
+    margin-top: 14%;
+    @media screen and (max-width: 1023px) {
+        margin-top: 23%;
+    }
+    @media screen and (max-width: 767px) {
+        margin-top: 55%;
+    }
+    .box-contact {
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        margin: 0 auto -14.4rem;
+        transform: translate(-50%, 50%);
+        width: 100%;
+        .container {
+            width: 50%;
+            box-shadow: 0 15px 60px 0 #00000073;
+            background-size: cover;
+            border-radius: 2rem;
+            @media screen and (max-width: 1024px) {
+                width: 70%;
+            }
+            @media screen and (max-width: 1023px) {
+                width: 85%;
+            }
+            @media screen and (max-width: 767px) {
+                width: 80%;
+            }
+        }
+        img {
+            margin-top: -6rem;
+            position: absolute;
+            bottom: 0;
+            @media screen and (max-width: 767px) {
+                position: relative;
+            }
+        }
+        .content {
+            padding: 5rem 10rem;
+            @media screen and (max-width: 1024px) {
+                padding: 5rem 3rem;
+            }
+            @media screen and (max-width: 767px) {
+                padding: 2rem;
+            }
+            .desc {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+    .box-footer {
+        background: #fcd27482;
+        padding: 8rem 0 6rem 0;
+        @media screen and (max-width: 767px) {
+            padding: 21rem 0 6rem 0;
+        }
+        .footer-menu {
+            @include flexcenter();
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            li {
+                list-style: none;
+                padding: 0 0.5rem;
+                font-family: $font-family-base;
+                @media screen and (max-width: 767px) {
+                    font-size: 1.2rem;
+                    width: calc(100% / 4);
+                    margin-bottom: 1rem;
+                    text-align: center;
+                }
+                a {
+                    color: $white;
+                    text-decoration: none;
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+        .logo {
+            img {
+                width: 15%;
+                margin: 0 auto;
+                @media screen and (max-width: 767px) {
+                    width: 45%;
+                }
+            }
+        }
+        .footer-content {
+            margin: 3rem;
+            font-size: 1.4rem;
+        }
+        .footer-payment {
+            width: 100%;
+            &__title {
+                text-align: center;
+                margin-bottom: 4rem;
+                font-family: $font-family-base;
+            }
+            &__logo {
+                >img {
+                    margin: 0 auto;
+                    width: 35%;
+                    @media screen and (max-width: 767px) {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+    .footer-copyright {
+        // margin-top: 4rem;
+        padding: 1rem 0;
+        text-align: center;
+        background-color: $gold;
+        color: $black;
+        .powered {
+            font-size: 1.3rem;
+            a {
+                color: $white;
+                text-decoration: none;
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+}

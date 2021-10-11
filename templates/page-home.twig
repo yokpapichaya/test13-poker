@@ -1,0 +1,212 @@
+{% extends 'base.twig' %}
+{% block content %}
+{% include 'templates/partial/banner.twig' %}
+
+<section class="sec-process">
+  <div class="container">
+    <div class="row">
+     {% for process in options_h_process %}
+        <div class="col-6 col-md-3">
+            <a href="{{ TimberPost(process.link).link }}" class="box-process">
+              <div class="box-process__number">{{ loop.index }}</div>
+              <div class="box-process__content">
+                <h3 class="title">{{ process.title }}</h3>
+                <div class="text">{{ process.text }}</div>
+              </div>
+            </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec-jackpot">
+  <div class="container">
+      <div class="box-jackpot">
+          <div class="box-jeckpot__text">JACKPOT:</div>
+          <div id="odometer" class="odometer"></div>
+          <input type="hidden" id="number" name="number" value="959232">
+      </div>
+  </div>
+</section>
+
+<section class="sec-sport" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 col-md-5">
+          {% set sport = options_h_sport %}
+            <a href="n88bet.net" class="box-sport sport-item" style="background-image: url('{{ TimberImage(sport.h_sport_bg).src }}')">
+              <div class="box-sport__title"><h3>{{ sport.h_sport_title }}</h3></div>
+              <div class="box-sport__description">{{ sport.h_sport_desc }}</div>
+            </a>
+          </div>
+          <div class="col-12 col-md-7">
+            <div class="swiper-container" id="sport-banner">
+              <div class="swiper-wrapper">
+              {% for service in options_h_link %}
+                <div class="swiper-slide box-slidepro">
+                    <img class="swiper-slide" src="{{ TimberImage(service.h_link_image).src }}">
+                    <div class="box-slidepro__detail">
+                      <div class="title"><h3>{{ service.h_link_name }}</h3></div>
+                      <div class="desc">{{ service.h_link_desc }}</div>
+                    </div>
+                </div>
+              {% endfor %}
+              </div>
+              <!-- If we need navigation buttons -->
+              <div class="swiper-button-prev sport-prev"></div>
+              <div class="swiper-button-next sport-next"></div>
+            </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="sec-games sec-casino" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+  <h2 class="sec-title">คาสิโนออนไลน์</h2>
+  <span class="watermark">CASINO</span>
+    <div class="row">
+      {% for c_item in options_all_bacarrat %}
+        {% set post_casino = c_item.casino_choice %}
+        <div class="col-6 col-md-3">
+          <div class="box-games casino-game" data-slug="{{ post_casino }}">
+            <div class="box-gamesmain">
+            <div class="box-gamesmain__image"><img src="{{ TimberImage(c_item.casino_block_logo).src }}" alt="{{ post_casino.label }}"></div>
+            <div class="box-gamesmain__logo">
+                <img src="https://cdn.ambbet.com/landing_img/logo-{{ post_casino }}.png" alt="{{ post_casino.label }} logo">
+            </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-games" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+  <h2 class="sec-title">สล็อตออนไลน์</h2>
+  <span class="watermark">SLOT</span>
+    <div class="row">
+      {% for s_item in options_all_slot %}
+        {% set post_slot = s_item.slot_choice %}
+        <div class="col-6 col-md-3">
+          <a href="{{ TimberPost('slot').link }}?game={{ post_slot.value }}&text={{ post_slot.label }}" class="box-games slot-game" data-slug="{{ post_slot.value }}">
+            <div class="box-gamesmain">
+            <div class="box-gamesmain__image"><img src="{{ TimberImage(s_item.slot_block_logo).src }}" alt="{{ post_slot.label }}"></div>
+            <div class="box-gamesmain__logo">
+                <img src="https://cdn.ambbet.com/landing_img/logo-{{ post_slot.value }}.png" alt="{{ post_slot.label }} logo">
+            </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-games sec-keno" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+  <h2 class="sec-title">คีโนออนไลน์</h2>
+  <span class="watermark">Keno</span>
+    <div class="row">
+      {% for k_item in options_keno_block %}
+        {% set post_keno = k_item.keno_choice %}
+        <div class="col-6 col-md-3">
+          <div class="box-games keno" data-slug="{{ post_keno }}">
+            <div class="box-gamesmain">
+            <div class="box-gamesmain__image"><img src="{{ TimberImage(k_item.keno_block_logo).src }}" alt="{{ post_keno.label }}"></div>
+            <div class="box-gamesmain__logo">
+                <img src="https://cdn.ambbet.com/landing_img/logo-{{ post_keno }}.png" alt="{{ post_keno.label }} logo">
+            </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-games sec-trading" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+  <h2 class="sec-title">เทรดดิ้งออนไลน์</h2>
+  <span class="watermark">Trading</span>
+    <div class="row">
+      {% for t_item in options_trading_block %}
+        {% set post_trading = t_item.trading_choice %}
+        <div class="col-6 col-md-3">
+          <div class="box-games trading" data-slug="{{ post_trading }}">
+            <div class="box-gamesmain">
+            <div class="box-gamesmain__image"><img src="{{ TimberImage(t_item.trading_block_logo).src }}" alt="{{ post_trading.label }}"></div>
+            <div class="box-gamesmain__logo">
+                <img src="https://cdn.ambbet.com/landing_img/logo-{{ post_trading }}.png" alt="{{ post_trading.label }} logo">
+            </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-article" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+    <div class="g-title"><h2 class="sec-title">บทความ</h2></div>
+    <div class="row">
+    {% if blog_post|length != 0 %}
+      {% for blog in blog_post %}
+      <div class="box-article col-12 col-md-4">
+        <div class="box-article__image" {% if blog.thumbnail != null %}style="background-image: url('{{ TimberImage(blog.thumbnail).src }}')"{% else %}style="background-image: url('{{ theme.path }}/images/general/not-found-blog.png')"{% endif %}></div>
+        <div class="box-article__text">
+            <h3 class="title">{{ blog.title }}</h3>
+            <p class="text">{{ blog.post_excerpt|striptags|length > 50 ? blog.post_excerpt|striptags|slice(0, 50) ~ '...' : blog.post_excerpt|striptags }}</p>
+            <a href="{{blog.link}}" class="btn btn--play">อ่านเพิ่มเติม</a>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h2>ไม่มีบทความ</h2>
+    {% endif %}
+    </div>
+    <a href="{{ site.url }}/article" class="btn gradient btn-article">ดูบทความเพิ่มเติม</a>
+  </div>
+</section>
+
+<section class="sec-comment" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+    <div class="g-title"><h2 class="sec-title">ความคิดเห็น</h2></div>
+    <div class="row">
+        {# {% if options.comment is not empty %} #}
+        <div class="box-comment-wrapper col-12 col-md-6">
+            <div class="box-wrapper">
+                {% for comment in page.comments %}
+                  <div class="box-comment" id="comment-{{ comment.id }}">
+                    <div class="box-comment__detail">
+                        <div class="name">{{ comment.author.name|striptags|length > 8 ? comment.author.name|striptags|slice(0, 8) ~ '..' : comment.author.name|striptags }}</div>
+                        <div class="date">{{ comment.date }} {{comment.time}}</div>
+                    </div>
+                    <div class="box-comment__text">
+                        {{ comment.content }}
+                    </div>
+                  </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+        {# {% endif %} #}
+        <div class="box-comment-from col-12 col-md-6">
+            <div class="box-wrapper">
+               <div class="comment-form">
+                  {{ function('comment_form') }}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

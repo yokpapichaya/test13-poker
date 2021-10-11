@@ -1,0 +1,26 @@
+{% extends 'base.twig' %}
+{% block content %}
+{% include 'templates/partial/banner.twig' %}
+
+<section class="sec-article">
+  <div class="container">
+    <div class="g-title"><h2 class="sec-title">บทความ</h2></div>
+    <div class="row">
+    {% if blog_post|length != 0 %}
+      {% for blog in blog_post %}
+      <div class="box-article col-12 col-md-4">
+        <div class="box-article__image" {% if blog.thumbnail != null %}style="background-image: url('{{ TimberImage(blog.thumbnail).src }}')"{% else %}style="background-image: url('{{ theme.path }}/images/general/not-found-blog.png')"{% endif %}></div>
+        <div class="box-article__text">
+            <h3 class="title">{{ blog.title }}</h3>
+            <p class="text">{{ blog.post_excerpt|striptags|length > 50 ? blog.post_excerpt|striptags|slice(0, 50) ~ '...' : blog.post_excerpt|striptags }}</p>
+            <a href="{{blog.link}}" class="btn btn--play">อ่านเพิ่มเติม</a>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h2>ไม่มีบทความ</h2>
+    {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

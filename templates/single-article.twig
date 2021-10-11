@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+{% block content %}
+<section class="sec-article-content">
+	<div class="container">
+		<div class="row">
+			{# <div class="col-12 col-md-6 image" style="background-image: url('{{ TimberImage(post.thumbnail).src }}')"></div> #}
+			<div class="col-12 col-md-6 image"><img src="{{TimberImage(post.thumbnail).src}}"></div>
+			<div class="col-12 col-md-6">
+				<div class="title"><h2 class="sec-title">{{ post.title }}</h2></div>
+				<div class="date">{{ post.post_date|date("M d, Y") }}</div>
+				<div class="socail">
+					<a class="white" href="https://www.facebook.com/sharer.php?u={{ post.link }}" target="_blank" title="Share to Facebook"><i class="fab fa-facebook-square"></i></a>
+                    <a class="white" href="https://twitter.com/intent/tweet?url={{ post.link }}&text={{ post.title }}&hashtags={{ site.title }}" target="_blank" title="Share to Twitter"><i class="fab fa-twitter-square"></i></a>
+                    <a class="white" href="https://social-plugins.line.me/lineit/share?url={{ post.link }}&amp;text={{ post.title }}&amp;from=line_scheme" title="Share to Line" rel="nofollow" target="_blank"><i class="fab fa-line"></i></span></a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			{{ post.content }}
+		</div>
+	</div>
+</section>
+{% endblock %}

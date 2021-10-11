@@ -1,0 +1,39 @@
+.sec-banner {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30rem;
+    @media screen and (max-width: 1200px) {
+        padding: 0;
+        height: 24rem;
+    }
+    @media screen and (max-width: 767px) {
+        height: 14.5rem;
+    }
+    .container {
+        @media screen and (max-width: 1200px) {
+            padding: 0;
+        }
+    }
+    .swiper-container {
+        height: 100%;
+        @media screen and (max-width: 1200px) {
+            border: none;
+        }
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.banner-prev,
+.banner-next {
+    &::after {
+        font-size: 3rem;
+        color: $gold;
+        font-weight: bold;
+    }
+}

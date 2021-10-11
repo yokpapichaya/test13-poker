@@ -1,0 +1,57 @@
+<footer>
+    <div class="footer-bg">
+        {% set c = options_f_contact %}
+            <div class="box-contact">
+                <div class="container" style="background-image: url('{{ TimberImage(c.background).src }}')">
+                    <div class="row wrap">
+                        <div class="col-12 col-md-4"><img src="{{ TimberImage(c.image).src }}"></div>
+                        <div class="col-12 col-md-8 content">
+                            <div class="desc">{{ c.content }}</div>
+                            <a href="{{ site.url }}/contact" class="btn">{{ c.button_text }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="container">
+                    <div class="footer-menu">
+                        {% for item in options_menu_group %}
+                        <li class="menu-list__item">
+                            <a href="{% if item.menu_link == true %}{{ item.link_external }}{% else %}{{ TimberPost(item.menu_page).link }}{% endif %}" {% if item.menu_link == true %}target="_blank"{% endif %} class="menu_check">
+                                {{ item.menu_text }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ site.url }}" class="logo"><img src="{{ TimberImage(options_logo_website).src }}" alt="logo website"></a>
+                    <div class="footer-content">{{ options_f_website }}</div>
+                    <div class="footer-payment">
+                        <div class="footer-payment__title">{{ __('ช่องทางการชำระเงิน', 'template')  }}</div>
+                        <div class="footer-payment__logo"><img src="{{ TimberImage(options_f_payment).src }}" alt="payment"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="footer-copyright__text">
+                Copyright 2021 {{ site.name }} ALL RIGHTS RESERVED.
+            </div>
+        </div>
+</footer>
+
+<script type="text/javascript">
+    WebFontConfig = {
+        google: { families: [ 'Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700' ] }
+    };
+
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{{ function('wp_footer') }}

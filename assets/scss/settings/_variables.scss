@@ -1,0 +1,59 @@
+//
+// Variables
+// --------------------------------------------------
+//== Colors
+//
+// --------------------------------------------------
+$white: #fff !default;
+$black: #000 !default;
+$brown: #131110!default;
+$theme-color: #0e0c0c!default;
+$dark-borwn: #110f0e!default;
+$gray: #0e0c0c!default;
+$gray-input: #7b766b!default;
+$dark-green: #32C49A!default;
+$darker-green: #005940!default;
+$pink: #fe2e6f !default;
+$gold: #e6be62 !default;
+$green: #00B900;
+//## Settings for some of the most global styles.
+//** Background color for `<body>`.
+$body-bg: $white !default;
+//** Global text color on `<body>`.
+$text-color: $theme-color !default;
+//** Global textual link color.
+$link-color: $white !default;
+//** Link hover color.
+$link-hover-color: #eab12b!default;
+//** Link hover decoration.
+$link-hover-decoration: none !default;
+$delay: all 0.3s ease-in-out;
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+$font-family-base: 'Kanit',
+sans-serif;
+$font-family-title: 'Monoton',
+sans-serif;
+$font-size-base: 1.6rem !default;
+$font-size-h1: 3rem !default;
+$font-size-h2: 2.8rem !default;
+$font-size-h3: 2rem !default;
+$font-size-h4: 1.6rem !default;
+//== Screen size
+//
+// NOTE: calculated from `rem` start with size iPhone5 (568px*320px)
+$screen-width: 42.6rem;
+$screen-height: 23.6rem;
+$gradient: linear-gradient(90deg, #976a36 0, #d4a54d 25%, #fcdf88 50%, #ffd577 75%, #eec465);
+$gradient-banner: linear-gradient(to right, #230000, #1c18176b, #1c171700, #1c181700, #1c181700, #1c181700, #1c181700, #1c181700, #1c181700, #1c181700, #1c181775, #230000);
+$gradient-list: linear-gradient(to bottom, #71abff, #79affe, #80b3fd, #88b6fb, #8fbafa, #92bbf8, #96bdf6, #99bef4, #99bdf1, #9abcee, #9abbec, #9abae9);
+$gradient-box: linear-gradient(to right top, #71abff, #78aefd, #7eb2fc, #85b5fa, #8bb8f8, #9cbef8, #aac4f8, #b8cbf8, #ced7f9, #e1e3fb, #f1f1fd, #ffffff);
+$gradient-bg: linear-gradient(to bottom, #71abff, #619ffb, #5293f7, #4286f2, #317aed, #317aed, #317aed, #317aed, #4286f2, #5293f7, #619ffb, #71abff);
+$gradient-menu: linear-gradient(to bottom, #9abae9, #9abbed, #99bdf0, #99bef4, #99bff8, #96befa, #92bdfc, #8fbcfe, #88b8fe, #80b4ff, #79afff, #71abff);
+
+$wide: 1200px;
+$desktop: 1024px;
+$tablet: 768px;
+$mobile-wide: 823px;
+$mobile: 576px;

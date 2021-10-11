@@ -1,0 +1,22 @@
+{% block html_head_container %}
+	{% include 'templates/html-header.twig' %}
+{% endblock %}
+
+	<body class="{{body_class}}" data-agent="{{ options_agent_choice }}" {% for product in options_product_check %}data-{{ product }}="1"{% endfor %}>
+	{% include 'templates/partial/bg.twig' %}
+		{% block header %}
+			{% include 'templates/header.twig' %}
+		{% endblock %}
+
+		<main class="" data-hash="{{ options_hash }}">
+			{% block content %}
+			{% endblock %}
+		</main>
+		
+		{% block footer %}
+			{% include 'templates/footer.twig' %}
+		{% endblock %}
+	</body>
+</html>
+
+

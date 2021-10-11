@@ -1,0 +1,154 @@
+<header id="myHeader">
+{# <div id="page-anim-preloader"></div> #}
+    <div class="logo-container">
+        <div class="container">
+            <a href="{{ site.url }}" class="logo"><img src="{{ TimberImage(options_logo_website).src }}" alt="logo website"></a>
+            <div class="button-container">
+                <a href="{{ site.url }}/login" class="btn login btn-check">
+                    <i class="i-login"></i>
+                    <span>{{ __('เข้าสู่ระบบ', 'template')  }}</span>
+                </a>
+                <a href="{{ site.url }}/register" class="btn join-now btn-check">
+                <i class="i-user"></i>
+                <span>{{ __('สมัครสมาชิก', 'template')  }}</span>
+                </a>
+                <div class="btn logout" onclick="window.location.href='';sessionStorage.clear();">
+                    <i class="i-login"></i>
+                    <span>{{ __('ออกจากระบบ', 'template')  }}</span>
+                </div>
+            </div>
+             <div class="menu-hamburger">
+                <span class="menu-hamburger__line"></span>
+                <span class="menu-hamburger__line"></span>
+                <span class="menu-hamburger__line"></span>
+            </div>
+        </div>
+    </div>
+    <div class="main-haeader">
+        <div class="navbar">
+            <div class="container">
+                <div class="menu">
+                    <ul class="menu-list">
+                    {% for item in options_main_menu %}
+                        <li class="menu-list__item">
+                            <a href="{% if item.check_link == 'out' %}{{ item.url }}{% elseif item.check_link == 'in' %}{{ TimberPost(item.page_link).link }}{% else %}ambbet.com{% endif %}" {% if item.check_link != 'in' %}target="_blank"{% endif %} class="menu_check {% if item.check_link == 'sport' %}sport-item{% endif %}">
+                                <i class="icon-menu" style="background-image: url('{{ TimberImage(item.icon).src }}')"></i>
+                                {{ item.menu_name }}
+                                {% if item.usesub == 1 %}
+                                    <i class="i-arrow-down"></i>
+                                {% endif %}
+                            </a>
+                        {% if item.usesub == 1 %}
+                            <div class="sub-menu">
+                                <ul class="nav-drop">
+                                    {% for child in item.sub_menu %}
+                                        {% if child.check_link == 'out' %}
+                                            <li class="nav-drop-item">
+                                                <a href="{{ child.url }}" target="_blank">{{ child.menu_name }}</a>
+                                            </li>
+                                        {% elseif child.check_link == 'sport' or child.check_link == 'lottery' %}
+                                            <li class="nav-drop-item">
+                                                <a href="javascript:void(0)" class="sport-item" target="_blank" data-state="{{ child.check_link }}">{{ child.menu_name }}</a>
+                                            </li>
+                                        {% elseif child.check_link == 'casino' %}
+                                            <li class="nav-drop-item">
+                                                <a href="javascript:void(0)" class="casino-item" data-slug="{{ child.casino_choice.value }}">{{ child.menu_name }}</a>
+                                            </li>
+                                        {% elseif child.check_link == 'slot' %}
+                                            <li class="nav-drop-item">
+                                                <a href="{{ TimberPost('slot').link }}?game={{ child.slot_choice.value }}&text={{ child.slot_choice.label }}" data-slug="{{ sub_menu.slot_choice.value }}">{{ child.menu_name }}</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="nav-drop-item">
+                                                <a href="{{ TimberPost(child.page_link).link }}" class="{% if TimberPost(sub_menu.page_link).slug == 'wallet' %} check-login{% endif %}">{{ child.menu_name }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu">
+        <nav class="nav js-nav">
+            <ul class="nav__list js-nav__list">
+               {% for item in options_main_menu %}
+                    <li class="nav__item {% if item.sub_menu == true %}has-child{% endif %}">
+                    <a href="{% if item.check_link == 'out' %}{{ item.url }}{% elseif item.check_link == 'in' %}{{ TimberPost(item.page_link).link }}{% else %}ambbet.com{% endif %}" class="nav__link {% if item.check_link == 'sport' %}sport-item{% endif %}">{{ item.menu_name }}</a>
+                   {% if item.usesub == 1 %}
+                    <i class="i-arrow-down"></i>
+                    <div class="sub-menu">
+                        <ul class="nav-drop">
+                             {% for child in item.sub_menu %}
+                                {% if child.check_link == 'out' %}
+                                <li class="nav-drop-item">
+                                    <a href="{{ child.url }}" target="_blank">{{ child.menu_name }}</a>
+                                </li>
+                                {% elseif child.check_link == 'sport' or child.check_link == 'lottery' %}
+                                <li class="nav-drop-item">
+                                    <a href="javascript:void(0)" class="sport-item" target="_blank" data-state="{{ child.check_link }}">{{ child.menu_name }}</a>
+                                </li>
+                                {% elseif child.check_link == 'casino' %}
+                                <li class="nav-drop-item">
+                                    <a href="javascript:void(0)" class="casino-item" data-slug="{{ child.casino_choice.value }}">{{ child.menu_name }}</a>
+                                </li>
+                                {% elseif child.check_link == 'slot' %}
+                                <li class="nav-drop-item">
+                                    <a href="{{ TimberPost('slot').link }}?game={{ child.slot_choice.value }}&text={{ child.slot_choice.label }}" data-slug="{{ sub_menu.slot_choice.value }}">{{ child.menu_name }}</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-drop-item">
+                                    <a href="{{ TimberPost(child.page_link).link }}" class="{% if TimberPost(sub_menu.page_link).slug == 'wallet' %} check-login{% endif %}">{{ child.menu_name }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+             <div class="button-container">
+                    <a href="{{ site.url }}/login" class="btn login btn-check">
+                        <i class="i-login"></i>
+                        <span>{{ __('เข้าสู่ระบบ', 'template')  }}</span>
+                    </a>
+                    <a href="{{ site.url }}/register" class="btn join-now btn-check">
+                        <i class="i-user"></i>
+                        <span>{{ __('สมัครสมาชิก', 'template')  }}</span>
+                        </a>
+                    <div class="btn logout" onclick="window.location.href='';sessionStorage.clear();">
+                        <i class="i-login"></i>
+                        <span>{{ __('ออกจากระบบ', 'template')  }}</span>
+                    </div>
+                </div>
+            </div>
+	    </nav>
+    </div>
+    <div class="menu-below">
+        <div class="menu-container">
+        {% set half = options_menu_group_mobile|length / 2 %}
+            {% for item in options_menu_group_mobile %}
+                <a href="{{ TimberPost(item.menu_page).link }}" class="menu-list {{ TimberPost(item.menu_page).slug }} {% if TimberPost(item.menu_page).slug == 'register' %}btn-check{% endif %}">
+                    <div class="menu-list__icon"><img src="{{ TimberImage(item.menu_icon).src }}"></div>
+                    <div class="menu-list__text">{{ item.menu_text }}</div>
+                </a>
+                {% if loop.index == 2 %}
+                    <a href="{{ site.url }}/login" class="menu-list button-login login btn-check">
+                        <div class="menu-list__icon"><img src="{{ theme.path }}/images/icon-6.png"></div>
+                        <div class="menu-list__text">เข้าสู่ระบบ</div>
+                    </a>
+                    <a class="menu-list btn logout" onclick="window.location.href='';sessionStorage.removeItem('token'); sessionStorage.removeItem('user'); sessionStorage.removeItem('redirect');">
+                        <div class="menu-list__icon"><img src="{{ theme.path }}/images/icon-6.png"></div>
+                        <div class="menu-list__text">ออกจากระบบ</div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</header>
